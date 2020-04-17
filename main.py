@@ -1,2 +1,1 @@
 import pygame
-print("vann")
