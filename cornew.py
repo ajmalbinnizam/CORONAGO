@@ -12,17 +12,10 @@ screen = pygame.display.set_mode((800, 533))
 
 # background
 background = pygame.image.load("coronaback.jpg")
-def paused():
-    ############
-    # pygame.mixer.music.stop()
-    pul =mixer.Sound("pulival.wav")
-    pul.play()
-    # pygame.mixer.music.pause()
-    #############
+
 # backgroundsound
 mixer.music.load("background.wav")
 mixer.music.play(-1)
-
 # Title
 pygame.display.set_caption("CORONA GO ")
 icon = pygame.image.load('player.png')
@@ -40,7 +33,7 @@ enemyX = []
 enemyY = []
 enemyX_change = []
 enemyY_change = []
-numofenemies = 7
+numofenemies = 6
 
 for i in range(numofenemies):
     enemyimg.append(pygame.image.load('coronavirus.png'))
@@ -59,7 +52,7 @@ bullet_state = "ready"
 
 # font
 score_val = 0
-font = pygame.font.Font('digital-7.ttf', 34)
+font = pygame.font.Font('freesansbold.ttf', 34)
 tetX = 10
 textY = 10
 cox = 290
@@ -72,21 +65,18 @@ def gameover():
     global back
     back = pygame.image.load("back.jpg")
     screen.blit(back, (0, 0))
-    over_text = over_font.render("GAME OVER", True, (255, 255, 255))
+    over_text =over_font.render("GAME OVER", True, (255, 255, 255))
     screen.blit(over_text, (200, 250))
-
 
 
 def corona(x, y):
     corona = over.render("GO CORONA", True, (255, 255, 255))
-    aju = font.render("@ajmalbinnizam", True, (255, 25, 50))
-    screen.blit(aju, (590, 10))
     screen.blit(corona, (x, y))
-
 
 def show_score(x, y):
     score = font.render("SCORE :" + str(score_val), True, (255, 0, 0))
     screen.blit(score, (x, y))
+
 
 
 def enemy(x, y, i):
@@ -105,7 +95,7 @@ def fire_bullet(x, y):
 
 def isCollision(enemyX, enemyY, bulletX, bulletY):
     distance = math.sqrt((math.pow(enemyX - bulletX, 2)) + (math.pow(enemyY - bulletY, 2)))
-    if distance < 34:
+    if distance <34:
         return True
     else:
         return False
@@ -119,6 +109,7 @@ while running:
     # back image
     screen.blit(background, (0, 0))
 
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -130,7 +121,7 @@ while running:
                 playerx_change = 8
             if event.key == pygame.K_UP:
                 if bullet_state == "ready":
-                    bullet_sound = mixer.Sound("laser.wav")
+                    bullet_sound=mixer.Sound("laser.wav")
                     bullet_sound.play()
                     # get x co ordinate of space ship
                     bulletX = playerx
@@ -149,25 +140,20 @@ while running:
     # enemy movement
     for i in range(numofenemies):
         # game over
-        if enemyY[i] > 100:   #game pointttttttttt
+        if enemyY[i]>480:
             for j in range(numofenemies):
-                enemyY[j] = 2000
-            paused()
-
+                enemyY[j]=2000
             gameover()
-
             break
-##############################################################
+
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
-            enemyX_change[i] = 6
+            enemyX_change[i] = 5
             enemyY[i] += enemyY_change[i]
         elif enemyX[i] >= 736:
-            enemyX_change[i] = -6
+            enemyX_change[i] = -5
             enemyY[i] += enemyY_change[i]
-
             # collision
-
         collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
             col_sound = mixer.Sound("explosion.wav")
@@ -185,7 +171,7 @@ while running:
         bulletY = 480
         bullet_state = "ready"
 
-    if bullet_state == "fire":
+    if bullet_state =="fire":
         fire_bullet(bulletX, bulletY)
         bulletY -= bulletY_change
 
