@@ -9,4 +9,4 @@
 
 
 
-[![pygame](http://img.instagram.com/vi/B_LXgD0Hzgx/0.jpg)]((https://www.instagram.com/p/B_LXgD0Hzgx/)
+[![pygame](http://img.instagram.com/vi/B_LXgD0Hzgx/B_LXgD0Hzgx.jpg)]((https://www.instagram.com/p/B_LXgD0Hzgx/)
