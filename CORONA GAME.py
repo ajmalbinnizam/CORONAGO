@@ -149,7 +149,7 @@ while running:
     # enemy movement
     for i in range(numofenemies):
         # game over
-        if enemyY[i] > 100:   #game pointttttttttt
+        if enemyY[i] > 400:   #game pointttttttttt
             for j in range(numofenemies):
                 enemyY[j] = 2000
             paused()
